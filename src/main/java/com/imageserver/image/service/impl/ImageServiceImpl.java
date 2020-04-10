@@ -1,5 +1,6 @@
 package com.imageserver.image.service.impl;
 
+import com.imageserver.image.service.ImageService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,5 +9,5 @@ import org.springframework.stereotype.Service;
  * 图片服务业务实现
  */
 @Service
-public class ImageServiceImpl {
+public class ImageServiceImpl implements ImageService {
 }
