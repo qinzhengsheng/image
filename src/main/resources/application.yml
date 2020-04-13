@@ -1,4 +1,10 @@
 server:
   port: 8888
+  servlet:
+    context-path: /
 
-
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100
+      max-request-size: 100

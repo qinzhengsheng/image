@@ -13,5 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("files")
 @Slf4j
 @Api(value = "文件上传接口", tags = {"文件控制器"})
-public class FileUploadController {
+public class FileUploadController extends BaseController {
+
+
 }

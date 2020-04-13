@@ -13,5 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("video")
 @Slf4j
 @Api(value = "音视频上传接口", tags = {"音视频控制器"})
-public class VideoUploadController {
+public class VideoUploadController extends BaseController {
+
+
+
 }
