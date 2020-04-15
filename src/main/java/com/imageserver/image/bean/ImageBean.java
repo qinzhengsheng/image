@@ -22,12 +22,10 @@ public class ImageBean implements Serializable {
     private String imageType;
     @ApiModelProperty(value = "图片源文件路径", name = "sourceUrl")
     private String sourceUrl;
-    @ApiModelProperty(value = "小图路径", name = "minUrl")
-    private String minUrl;
-    @ApiModelProperty(value = "大图路径", name = "maxUrl")
-    private String maxUrl;
+    @ApiModelProperty(value = "处理后图片路径", name = "afterProcessingUrl")
+    private String afterProcessingUrl;
     @ApiModelProperty(value = "图片大小", name = "size")
-    private Integer size;
+    private Long size;
 
 
 }

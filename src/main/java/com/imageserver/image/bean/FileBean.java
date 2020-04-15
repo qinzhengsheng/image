@@ -23,7 +23,7 @@ public class FileBean implements Serializable {
     @ApiModelProperty(value = "文件路径", name = "filePath")
     private String filePath;
     @ApiModelProperty(value = "文件大小", name = "size")
-    private Integer size;
+    private Long size;
 
 
 }

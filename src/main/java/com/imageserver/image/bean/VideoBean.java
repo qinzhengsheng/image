@@ -18,7 +18,7 @@ public class VideoBean implements Serializable {
     @ApiModelProperty(value = "音视频地址", name = "videoPath")
     private String videoPath;
     @ApiModelProperty(value = "音视频大小", name = "size")
-    private Integer size;
+    private Long size;
     @ApiModelProperty(value = "音视频类型", name = "videoType")
     private String videoType;
     @ApiModelProperty(value = "视频封面地址", name = "frontCover")
