@@ -3,8 +3,8 @@ package com.imageserver.image.service.impl;
 import com.imageserver.image.bean.ImageBean;
 import com.imageserver.image.common.CommonConstant;
 import com.imageserver.image.service.ImageService;
+import com.imageserver.image.util.ImageUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -21,7 +21,7 @@ public class ImageServiceImpl implements ImageService {
 
 
     @Override
-    public void uploadFile(MultipartFile file, String wide, String high, ImageBean imageBean) throws IOException {
+    public void uploadFile(MultipartFile file, Integer wide, Integer high, ImageBean imageBean) throws IOException {
         Calendar instance = Calendar.getInstance();
         String tempPath = CommonConstant.IMAGEPATH + instance.get(Calendar.YEAR) + "-" + instance.get(Calendar.MONTH) + "-" + instance.get(Calendar.DAY_OF_MONTH);
         String fileName = file.getName() + "_" + System.currentTimeMillis();
@@ -32,8 +32,9 @@ public class ImageServiceImpl implements ImageService {
         File targetFile = new File(tempPath, fileName);
         file.transferTo(targetFile);
         imageBean.setSourceUrl(tempPath + fileName);
-        if (!StringUtils.isEmpty(wide) && !StringUtils.isEmpty(high)) {
-
+        if (wide != null && high != null) {
+            imageBean.setAfterProcessingUrl(tempPath + fileName + "scale");
+            ImageUtils.scale2(imageBean.getSourceUrl(), imageBean.getAfterProcessingUrl(), high, wide, true);
         }
     }
 

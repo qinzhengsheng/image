@@ -19,8 +19,11 @@ public interface ImageService {
      * @param wide
      * @param high
      * @param imageBean
+     * @throws IOException
      * @return
      */
-    void uploadFile(MultipartFile file, String wide, String high, ImageBean imageBean) throws IOException;
+    void uploadFile(MultipartFile file, Integer wide, Integer high, ImageBean imageBean) throws IOException;
+
+
 
 }

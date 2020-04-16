@@ -15,6 +15,8 @@ import java.io.Serializable;
 @ApiModel(value = "VideoBean", description = "音视频实体类")
 public class VideoBean implements Serializable {
 
+    @ApiModelProperty(value = "音视频名称", name = "videoName")
+    private String videoName;
     @ApiModelProperty(value = "音视频地址", name = "videoPath")
     private String videoPath;
     @ApiModelProperty(value = "音视频大小", name = "size")
@@ -23,6 +25,8 @@ public class VideoBean implements Serializable {
     private String videoType;
     @ApiModelProperty(value = "视频封面地址", name = "frontCover")
     private String frontCover;
+    @ApiModelProperty(value = "时长", name = "duration")
+    private double duration;
 
 
 }

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author qinzhengsheng
  * @ImageController
@@ -44,7 +47,7 @@ public class ImageController extends BaseController {
             @ApiImplicitParam(value = "宽（上传后的图片宽）", name = "wide"),
             @ApiImplicitParam(value = "高（上传后的图片高）", name = "high")
     })
-    public ResultBody uploadFile(MultipartFile file, String wide, String high) {
+    public ResultBody uploadFile(MultipartFile file, Integer wide, Integer high) {
         if (file.isEmpty()) {
             return error("图片上传失败，未收到图片！请重新上传");
         }
@@ -64,7 +67,7 @@ public class ImageController extends BaseController {
 
     /**
      * 多图片上传
-     * @param file
+     * @param files
      * @param high
      * @param wide
      * @return
@@ -72,12 +75,27 @@ public class ImageController extends BaseController {
     @PostMapping("files")
     @ApiOperation(value = "多图片上传", notes = "多图片上传", httpMethod = "POST")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "图片", name = "file", required = true),
+            @ApiImplicitParam(value = "图片", name = "files", required = true),
             @ApiImplicitParam(value = "宽（上传后的图片宽）", name = "wide"),
             @ApiImplicitParam(value = "高（上传后的图片高）", name = "high")
     })
-    public ResultBody uploadFiles(MultipartFile[] file, String wide, String high) {
-        return success();
+    public ResultBody uploadFiles(MultipartFile[] files, Integer wide, Integer high) {
+        List<ImageBean> imageBeanList=new ArrayList<>();
+        try {
+            for (MultipartFile multipartFile:files) {
+                String originalFilename = multipartFile.getOriginalFilename();
+                ImageBean imageBean=new ImageBean();
+                imageBean.setImageName(originalFilename);
+                imageBean.setImageType(originalFilename.substring(originalFilename.lastIndexOf(".")));
+                imageBean.setSize(multipartFile.getSize());
+                imageService.uploadFile(multipartFile, wide, high, imageBean);
+                imageBeanList.add(imageBean);
+            }
+            return success(imageBeanList);
+        } catch (Exception e) {
+            log.error("图片上传出错，错误消息："+e.getMessage());
+            return error(e.getMessage());
+        }
     }
 
 
