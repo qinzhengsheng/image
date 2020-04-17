@@ -46,6 +46,32 @@ public class CommonConstant {
      * Photoshop的专用格式Photoshop
      */
     public static final String IMAGE_TYPE_PSD = "psd";
-
-
+    /**
+     * 微软视频
+     */
+    public static final String VIDEO_TYPE_WMV = "wmv";
+    /**
+     * MPEG视频
+     */
+    public static final String VIDEO_TYPE_MP4 = "mp4";
+    /**
+     * Apple视频
+     */
+    public static final String VIDEO_TYPE_M4V = "m4v";
+    /**
+     * Apple视频
+     */
+    public static final String VIDEO_TYPE_MOV = "mov";
+    /**
+     * 其他视频
+     */
+    public static final String VIDEO_TYPE_AVI = "avi";
+    /**
+     * Real Player
+     */
+    public static final String VIDEO_TYPE_RM = "rm";
+    /**
+     * Real Player
+     */
+    public static final String VIDEO_TYPE_RMVB = "rmvb";
 }

@@ -23,16 +23,14 @@ public class FileUploadServiceImpl implements FileUploadService {
     public void uploadFile(MultipartFile multipartFile, FileBean fileBean) throws IOException {
         Calendar instance = Calendar.getInstance();
         String tempPath = CommonConstant.FILEPATH + instance.get(Calendar.YEAR) + "-" + instance.get(Calendar.MONTH) + "-" + instance.get(Calendar.DAY_OF_MONTH);
-        String fileName = multipartFile.getName() + "_" + System.currentTimeMillis();
-        File file=new File(tempPath);
+        File file = new File(tempPath);
         if (!file.exists()) {
             file.mkdirs();
         }
-        File targetFile = new File(tempPath, fileName);
+        File targetFile = new File(tempPath, fileBean.getFileName());
         multipartFile.transferTo(targetFile);
-        fileBean.setFilePath(tempPath+fileName);
+        fileBean.setFilePath(tempPath + "/" + fileBean.getFileName());
     }
-
 
 
 }

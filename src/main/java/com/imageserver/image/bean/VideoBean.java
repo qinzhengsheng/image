@@ -26,7 +26,7 @@ public class VideoBean implements Serializable {
     @ApiModelProperty(value = "视频封面地址", name = "frontCover")
     private String frontCover;
     @ApiModelProperty(value = "时长", name = "duration")
-    private double duration;
+    private Long duration;
 
 
 }
