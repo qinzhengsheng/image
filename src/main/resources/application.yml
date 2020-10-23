@@ -11,3 +11,22 @@ spring:
       max-file-size: 100
       max-request-size: 100
       location: /data/temp/tempFile
+
+logging:
+  file:
+    max-history: 7
+    max-size: 100
+    path: /data/log/
+    name: server.log
+  level:
+    root: info
+    org:
+      springframework:
+        security: debug
+        web: debug
+    com:
+      imageserver:
+        image: info
+  pattern:
+    file: '%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+  config: classpath:/logger-config.xml
